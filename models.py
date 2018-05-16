@@ -21,6 +21,22 @@ class Seguridad:
             # No debe incluir caracteres especiales.
             assert((clave1.isalnum()!=False))
             
+            #Al menos tres letras y al menos una de ellas debe ser mayúscula
+
+            totalLetras1 = 0
+            cantidadMayusculas1=0
+            cantidadMinusculas1=0
+            for i in range(len(clave1)):
+                if (clave1[i].isupper()):
+                    cantidadMayusculas1 +=1
+                elif (clave1[i].islower()):
+                    cantidadMinusculas1 +=1
+            
+            totalLetras1=cantidadMayusculas1+cantidadMinusculas1
+            
+            assert(totalLetras1 >= 3)
+            assert(cantidadMayusculas1!=0)
+            
         except:
             if (clave1 != clave2):
                 return 0
@@ -28,3 +44,7 @@ class Seguridad:
                 return 1
             elif (clave1.isalnum()==False):
                 return 2
+            elif (totalLetras1<3):
+                return 3
+            elif (cantidadMayusculas1 == 0):
+                return 4
