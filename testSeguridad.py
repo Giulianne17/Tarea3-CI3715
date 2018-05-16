@@ -1,5 +1,5 @@
 import unittest
-from Seguridad import *
+from Sistema.migrations import models 
 
 class Test(unittest.TestCase):
 
@@ -10,7 +10,6 @@ class Test(unittest.TestCase):
 	def tearDown(self):
 		self.Seguridad = None
 		pass
-
 
 	#Caso de prueba para cuando las claves ingresadas son distintas
 	def test_ClavesDistintas(self):
