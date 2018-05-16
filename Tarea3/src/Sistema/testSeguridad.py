@@ -101,6 +101,14 @@ class Test(unittest.TestCase):
 		self.clave1 = "Aab12345aaaaaaaa"
 		self.clave2 = "Aab12345aaaaaaaa"
 		self.assertTrue(self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2) == 7)
+		
+	# Caso de prueba para cuando el correo no contiene @
+	def test_correoSinArroba(self):
+		self.correo = "correoejemplousb.ve"
+		self.clave1 = "Aab12345aaaaaaaa"
+		self.clave2 = "Aab12345aaaaaaaa"
+		self.assertTrue(self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2) == 8)
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
