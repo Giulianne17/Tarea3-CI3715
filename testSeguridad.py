@@ -11,7 +11,6 @@ class Test(unittest.TestCase):
 		self.Seguridad = None
 		pass
 
-
 	#Caso de prueba para cuando las claves ingresadas son distintas
 	def test_ClavesDistintas(self):
 		self.correo = "correoejemplo@usb.ve"
@@ -33,6 +32,13 @@ class Test(unittest.TestCase):
 		self.clave2 = "Abc123456789111abc"
 		self.assertTrue(self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2) == 1, "La clave ingresada es muy larga")
 
+	# Caso de prueba para cuando la clave ingresada posee caracteres especiales
+	def test_Alfanumerico(self):
+		self.correo = "correoejemplo@usb.ve"
+		self.clave1 = "Abc-123456789111"
+		self.clave2 = "Abc-123456789111"
+		self.assertTrue(self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2) == 2, "La clave ingresada contiene caracteres especiales")
+	
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
