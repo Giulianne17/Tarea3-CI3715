@@ -13,7 +13,7 @@ class Seguridad:
             pass
         except :
             print("Correo electrónico inválido")
-            exit()
+            return 8
         try:
             assert(clave1==clave2)
             
@@ -74,16 +74,13 @@ class Seguridad:
     def ingresarUsuario(self, correo, clave1):
         ###Inicio validaciones
         try:
-
             assert(re.match("^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$",correo,flags=0)!=None)
             pass
         except :
             print("Correo electrónico inválido")
-            exit()
+            return 8
     
         try:
-            #Faltan los try de cada assert
-            assert(clave1==clave2)
 
             # Su longitud debe estar entre 8 y 16 caracteres
             assert(8<=len(clave1)<=16)
@@ -128,3 +125,21 @@ class Seguridad:
             elif (digito1==0):
                 print("Las claves deben tener al menos un digito")  
         ###Fin Validaciones
+        
+        try:
+            assert(correo in self.usuarioClave)
+        
+        except:
+            print("Usuario inválido.")
+            return 8
+
+        try:
+            claveReversa=clave[::-1]
+            assert(self.usuarioClave[correo]==claveReversa)
+            
+        except:
+            print("Clave inválida.")
+            return 8
+
+        print("Usuario aceptado.")
+        return 7
