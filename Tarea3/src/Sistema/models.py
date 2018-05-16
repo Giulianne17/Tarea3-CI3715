@@ -107,8 +107,7 @@ class Seguridad:
             assert(totalLetras1>=3)
             assert(cantidadMayusculas1!=0 and cantidadMinusculas1!=0)
             assert(digito1==1)
-            
-            return 7
+
             
         except:
             print("Clave inválida")
