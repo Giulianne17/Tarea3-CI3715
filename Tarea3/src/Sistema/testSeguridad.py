@@ -108,6 +108,27 @@ class Test(unittest.TestCase):
 		self.clave1 = "Aab12345aaaaaaaa"
 		self.clave2 = "Aab12345aaaaaaaa"
 		self.assertTrue(self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2) == 8)
+	
+	#Caso de prueba para ver si registra el correo
+	def test_registroCorreoUsuario(self):
+		self.correo = "correoejemplo@usb.ve"
+		self.clave1 = "Aab12345aaaaaaaa"
+		self.clave2 = "Aab12345aaaaaaaa"
+		self.x = self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2)
+		self.assertTrue(self.correo in self.Seguridad.usuarioClave)
+	
+	#Caso de pruebapara ver si se guarda la clave codificada
+	def test_registroClaveUsuario(self):
+		self.correo = "correoejemplo@usb.ve"
+		self.clave1 = "Aab12345aaaaaaaa"
+		self.clave2 = "Aab12345aaaaaaaa"
+		self.x = self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2)
+		self.claveReversa = self.clave1[::-1] 
+		self.asserTrue(self.Seguridad.usuarioClave[self.correo]==self.claveReversa)
+	
+	#Casos de prueba para ingresarUsuario
+	
+	
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
