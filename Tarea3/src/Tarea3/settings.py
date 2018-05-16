@@ -54,7 +54,7 @@ ROOT_URLCONF = 'Tarea3.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['Sistema/templates/Sistema'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
