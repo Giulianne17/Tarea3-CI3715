@@ -38,6 +38,20 @@ class Test(unittest.TestCase):
 		self.clave1 = "Abc-123456789111"
 		self.clave2 = "Abc-123456789111"
 		self.assertTrue(self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2) == 2, "La clave ingresada contiene caracteres especiales")
+
+	# Caso de prueba para cuando la clave no cuenta con la cantidad minima de letras
+	def test_minLetras(self):
+		self.correo = "correoejemplo@usb.ve"
+		self.clave1 = "Ab123456789"
+		self.clave2 = "Ab123456789"
+		self.assertTrue(self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2) == 3, "La clave ingresada contiene menos de tres letras")
+
+	# Caso de prueba para cuando la clave no posee ninguna letra mayuscula
+	def test_minMayus(self):
+		self.correo = "correoejemplo@usb.ve"
+		self.clave1 = "abc123456789"
+		self.clave2 = "abc123456789"
+		self.assertTrue(self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2) == 4, "La clave ingresada no posee ninguna letra mayuscula")
 	
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
