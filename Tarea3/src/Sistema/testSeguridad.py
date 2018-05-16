@@ -87,7 +87,20 @@ class Test(unittest.TestCase):
 		self.clave1 = "Aabcd12345"
 		self.clave2 = "Aabcd12345"
 		self.assertTrue(self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2) == 7)
-	
+
+	# Caso de prueba para cuando la clave posee el minimo de caracteres permitido
+	def test_exactoMin(self):
+		self.correo = "correoejemplo@usb.ve"
+		self.clave1 = "Aab12345"
+		self.clave2 = "Aab12345"
+		self.assertTrue(self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2) == 7)
+
+	# Caso de prueba para cuando la clave posee el maximo de caracteres permitido
+	def test_exactoMax(self):
+		self.correo = "correoejemplo@usb.ve"
+		self.clave1 = "Aab12345aaaaaaaa"
+		self.clave2 = "Aab12345aaaaaaaa"
+		self.assertTrue(self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2) == 7)
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
