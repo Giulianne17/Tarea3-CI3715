@@ -117,7 +117,7 @@ class Test(unittest.TestCase):
 		self.x = self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2)
 		self.assertTrue(self.correo in self.Seguridad.usuarioClave)
 	
-	#Caso de pruebapara ver si se guarda la clave codificada
+	#Caso de prueba para ver si se guarda la clave codificada
 	def test_registroClaveUsuario(self):
 		self.correo = "correoejemplo@usb.ve"
 		self.clave1 = "Aab12345aaaaaaaa"
@@ -126,10 +126,28 @@ class Test(unittest.TestCase):
 		self.claveReversa = self.clave1[::-1] 
 		self.asserTrue(self.Seguridad.usuarioClave[self.correo]==self.claveReversa)
 	
-	#Casos de prueba para ingresarUsuario
+	#Casos de prueba para ingresar un usuario
+	def test_ingresarCorreoMalo(self):
+		self.correo = "correoejemplo@usb.ve"
+		self.clave1 = "Aab12345aaaaaaaa"
+		self.clave2 = "Aab12345aaaaaaaa"
+		self.x = self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2)
+		self.assertTrue(self.ingresarUsuario("correoejemp@usb.ve",self.clave1)==8)
 	
-	
-
+	def test_ingresarClaveMala(self):
+		self.correo = "correoejemplo@usb.ve"
+		self.clave1 = "Aab12345aaaaaaaa"
+		self.clave2 = "Aab12345aaaaaaaa"
+		self.x = self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2)
+		self.assertTrue(self.Seguridad.ingresarUsuario(self.correo,"Aab12345aaaaaaab")==9)
+		
+	def test_ingresarUsuarioCorrecto(self):
+		self.correo = "correoejemplo@usb.ve"
+		self.clave1 = "Aab12345aaaaaaaa"
+		self.clave2 = "Aab12345aaaaaaaa"
+		self.x = self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2)
+		self.assertTrue(self.Seguridad.ingresarUsuario(self.correo,self.clave1)==7)
+		
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
