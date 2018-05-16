@@ -26,3 +26,5 @@ class Seguridad:
                 return 0
             elif (8>len(clave1) or len(clave1)>16):
                 return 1
+            elif (clave1.isalnum()==False):
+                return 2
