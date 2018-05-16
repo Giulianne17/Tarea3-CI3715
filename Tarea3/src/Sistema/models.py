@@ -13,7 +13,12 @@ class Seguridad:
             exit()
         try:
             assert(clave1==clave2)
+            
+            # Su longitud debe estar entre 8 y 16 caracteres
+            assert(8<=len(clave1)<=16)
+            
         except:
             if (clave1 != clave2):
                 return 0
-            
+            elif (8>len(clave1) or len(clave1)>16):
+                return 1
