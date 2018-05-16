@@ -139,7 +139,7 @@ class Seguridad:
             
         except:
             print("Clave inválida.")
-            return 8
+            return 9
 
         print("Usuario aceptado.")
         return 7
