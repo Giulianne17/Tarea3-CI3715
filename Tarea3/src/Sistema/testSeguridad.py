@@ -73,6 +73,21 @@ class Test(unittest.TestCase):
 		self.clave1 = "AaBbCcDd1"
 		self.clave2 = "AaBbCcDd1"
 		self.assertTrue(self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2) == 7)
+	
+	# Caso de prueba para cuando la clave posee el minimo de letras minusculas
+	def test_exactoMinus(self):
+		self.correo = "correoejemplo@usb.ve"
+		self.clave1 = "ABCa12345"
+		self.clave2 = "ABCa12345"
+		self.assertTrue(self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2) == 7)
+
+	# Caso de prueba para cuando la clave posee el minimo de letras mayusculas
+	def test_exactoMayus(self):
+		self.correo = "correoejemplo@usb.ve"
+		self.clave1 = "Aabcd12345"
+		self.clave2 = "Aabcd12345"
+		self.assertTrue(self.Seguridad.registrarUsuario(self.correo, self.clave1, self.clave2) == 7)
+	
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
