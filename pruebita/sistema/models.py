@@ -6,6 +6,17 @@ import re
 
 class Seguridad:
     
+    error=["Sus claves deben ser iguales",
+    "La longitud de la clave debe estar entre 8 y 16 caracteres",
+    "La clave no debe contener caracteres especiales",
+    "La clave debe tener al menos tres letras",
+    "La clave debe contener al menos una mayúscula",
+    "La clave debe contener al menos una minúscula",
+    "La clave debe contener al menos un dígito",
+    "",
+    "Correo inválido",
+    "Usuario inválido",
+    "Clave inválida"]
     usuarioClave={}
     
     def registrarUsuario(self, correo, clave1, clave2):
@@ -115,24 +126,30 @@ class Seguridad:
             print("Clave inválida")
             if (8>len(clave1) or len(clave1)>16):
                 print("Las claves deben tener una longitud entre 8 y 16 caracteres")
+                return 1
             elif (clave1.isalnum()==False):
                 print("Las claves deben ser alfanumericas")
+                return 2
             elif (totalLetras1<3):
                 print("Las claves deben tener al menos tres letras")
+                return 3
             elif (cantidadMayusculas1==0):
                 print("Las claves deben tener al menos una mayuscula")
+                return 4
             elif (cantidadMinusculas1==0):
                 print("Las claves deben tener al menos una minuscula")
+                return 5
             elif (digito1==0):
                 print("Las claves deben tener al menos un digito")  
+                return 6
         ###Fin Validaciones
-        
+
         try:
             assert(correo in self.usuarioClave)
         
         except:
             print("Usuario inválido.")
-            return 8
+            return 9
 
         try:
             claveReversa=clave1[::-1]
@@ -140,5 +157,5 @@ class Seguridad:
             
         except:
             print("Clave inválida.")
-            return 9
+            return 10
         return 7
